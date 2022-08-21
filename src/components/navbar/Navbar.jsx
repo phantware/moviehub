@@ -1,13 +1,22 @@
 import { ArrowDropDown, Notifications, Search } from '@material-ui/icons'
+import { useState } from 'react'
 import './navbar.scss'
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  window.onscroll = () => {
+    setIsScrolled(window.pageYOffset === 0 ? false : true)
+    return () => (window.onscroll = null)
+  }
+  console.log(isScrolled)
+
   return (
-    <div className='navbar'>
+    <div className={isScrolled ? 'navbar scrolled' : 'navbar'}>
       <div className='container'>
         <div className='left'>
           <img
-            src='https://res.cloudinary.com/phantware-nigeria/image/upload/v1661097782/moviehub2.png'
+            src='https://res.cloudinary.com/phantware-nigeria/image/upload/v1661102478/moviehub_-2.png'
             alt='movieHub'
           />
           <span>Homepage</span>

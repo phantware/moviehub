@@ -5,7 +5,7 @@ import Home from './pages/home/Home'
 import Watch from './pages/watch/Watch'
 import { Routes, Route, Navigate } from 'react-router-dom'
 function App() {
-  const user = false
+  const user = true
   return (
     <Routes>
       <Route exact path='/'>
@@ -19,13 +19,17 @@ function App() {
           element={user ? <Navigate to='/' replace /> : <Register />}
         />
 
-        <Route path='/movies'>
-          <Route path='/movies' element={<Home type='movies' />} />
-        </Route>
-        <Route path='/series'>
-          <Route path='/series' element={<Home type='series' />} />
-        </Route>
-        <Route path='/watch' element={<Watch />} />
+        {user && (
+          <>
+            <Route path='/movies'>
+              <Route path='/movies' element={<Home type='movies' />} />
+            </Route>
+            <Route path='/series'>
+              <Route path='/series' element={<Home type='series' />} />
+            </Route>
+            <Route path='/watch' element={<Watch />} />
+          </>
+        )}
       </Route>
     </Routes>
   )

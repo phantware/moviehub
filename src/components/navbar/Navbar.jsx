@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowDropDown, Notifications, Search } from '@material-ui/icons'
 import { useState } from 'react'
 import './navbar.scss'
@@ -19,9 +20,15 @@ const Navbar = () => {
             src='https://res.cloudinary.com/phantware-nigeria/image/upload/v1661102478/moviehub_-2.png'
             alt='movieHub'
           />
-          <span>Homepage</span>
-          <span>Series</span>
-          <span>Movies</span>
+          <Link to='/' className='link'>
+            <span>Homepage</span>
+          </Link>
+          <Link to='/series' className='link'>
+            <span>Series</span>
+          </Link>
+          <Link to='/movies' className='link'>
+            <span>Movies</span>
+          </Link>
           <span>New and Popular</span>
           <span>My List</span>
         </div>

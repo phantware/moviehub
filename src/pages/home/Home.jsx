@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { ConfirmationNumberOutlined } from '@material-ui/icons'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import Featured from '../../components/featured/Featured'
@@ -19,8 +19,10 @@ const Home = ({ type }) => {
             genre ? '&genre=' + genre : ''
           }`
         )
+        console.log('res', res)
       } catch (err) {
         console.log(err.message)
+        console.log(err.response.data)
       }
     }
     getRandomLists()

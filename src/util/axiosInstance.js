@@ -3,15 +3,15 @@ import axios from 'axios'
 let headers = {}
 
 const axiosInstance = axios.create({
-  baseURL: 'https://phantware-movie-api.herokuapp.com/api/',
+  baseURL: 'http://localhost:8800/api/',
   headers,
 })
 
 axiosInstance.interceptors.request.use(
   function async(config) {
     const token =
-      'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQyZTZjNTBjNjVmMDBjODI1NTgyOSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NjE4NTA3NjQsImV4cCI6MTY2MjI4Mjc2NH0.Cu15Na9AoNSvBKoXkhBxpo46yOc4Cfizie1on47_uKk'
-    config.headers.Authorization = token
+      'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGRlMmU2ZGIxN2U1Mjk3OWY1ZTM4ZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2MTk2MjQwMiwiZXhwIjoxNjYyMzk0NDAyfQ.oeDrmXVieVQQFj0v17z2Ir6ppArLSBfmO1R0BLosFpk'
+    config.headers.token = token
     return config
   },
   function (error) {

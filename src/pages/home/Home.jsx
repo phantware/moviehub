@@ -1,4 +1,3 @@
-import { ConfirmationNumberOutlined } from '@material-ui/icons'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import Featured from '../../components/featured/Featured'
@@ -19,7 +18,7 @@ const Home = ({ type }) => {
             genre ? '&genre=' + genre : ''
           }`
         )
-        console.log('res', res)
+        setLists(res.data)
       } catch (err) {
         console.log(err.message)
         console.log(err.response.data)
@@ -31,10 +30,9 @@ const Home = ({ type }) => {
     <div className='home'>
       <Navbar />
       <Featured type={type} />
-      <List />
-      <List />
-      <List />
-      <List />
+      {lists.map((list) => (
+        <List list={list} />
+      ))}
     </div>
   )
 }

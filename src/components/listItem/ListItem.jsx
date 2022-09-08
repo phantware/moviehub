@@ -15,6 +15,7 @@ const ListItem = ({ index, item }) => {
   const [movie, setMovie] = useState({})
 
   useEffect(() => {
+    console.log('lalamovie', movie)
     const getMovie = async () => {
       try {
         const res = await axiosInstance.get('/movies/find/' + item)

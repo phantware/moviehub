@@ -18,6 +18,7 @@ const ListItem = ({ index, item }) => {
     console.log('lalamovie', movie)
     const getMovie = async () => {
       try {
+        console.log('hello')
         const res = await axiosInstance.get('/movies/find/' + item)
         console.log('trailer', movie.trailer)
         setMovie(res.data)
@@ -26,7 +27,8 @@ const ListItem = ({ index, item }) => {
       }
     }
     getMovie()
-  }, [item])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHover])
 
   return (
     <Link to={{ pathname: '/watch', movie: movie }}>
@@ -39,7 +41,12 @@ const ListItem = ({ index, item }) => {
         <img src={movie.img} alt='' />
         {isHover && (
           <>
-            <video src={movie.trailer} autoPlay={true} loop />
+            <iframe
+              src={movie.trailer}
+              autoPlay={true}
+              loop
+              title='moviePrev'
+            />
             <div className='itemInfo'>
               <div className='icons'>
                 <PlayArrow className='icon' />
